@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Area</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="secure-container">
+    <div class="header">
+        <h2>Secure Area</h2>
+        <button id="logoutButton">Logout</button>
+    </div>
+
+    <div id="secureMessage" class="message success">
+        You logged into a secure area!
+    </div>
+
+    <p>Welcome to the secure content. Here you can see protected information.</p>
+</div>
+
+<script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'login.html?error=notlogged';
+    }
+
+    const logoutButton = document.getElementById('logoutButton');
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    });
+</script>
+
+</body>
+</html>
